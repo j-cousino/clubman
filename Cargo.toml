@@ -1,5 +1,7 @@
-[workspace]
-members = [
-    "cli",
-    "lib",
-]
+[package]
+name = "clubman"
+version = "0.0.1"
+authors = ["Jeff Cousino <j.cousino.consulting@gmail.com>"]
+edition = "2018"
+
+[dependencies]
