@@ -5,3 +5,5 @@ authors = ["Jeff Cousino <j.cousino.consulting@gmail.com>"]
 edition = "2018"
 
 [dependencies]
+rocket = "0.4.7"
+rocket_contrib = "0.4.7"
