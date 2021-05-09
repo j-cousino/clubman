@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Hello World</title>
+  <meta name="description" content="Hello World">
+  <meta name="author" content="Jeff Cousino">
+  <link rel="icon" type="image/svg" href="/images/logo.svg" sizes="32x32">
+  <link rel="icon" type="image/svg" href="/images/logo.svg" sizes="16x16">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Style of the body */
+    body {
+      background-color: #333;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+    }
+
+    .header {
+      background-color: rgb(170, 0, 0);
+    }
+
+
+    .container {
+      padding: 0 20px;
+      max-width: 1300px;
+      margin: auto;
+    }
+
+    .header .banner {
+      padding: 30px 0 50px;
+    }
+
+    .header .banner h2 {
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .centered {
+      text-align: center;
+    }
+
+    .navrow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .navbar  a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .navbar a:hover {
+      background-color: rgb(179, 98, 98);
+    }
+
+
+    @media  screen and (max-width: 700px) {
+      .navbar, .navrow {
+        flex-direction: column;
+      }
+    }
+
+    .value-grid {
+      display: flex;
+      flex-flow: row wrap;
+      align-content: space-between;
+      background-color: rgba(255, 255, 255, .25 );
+    }
+
+    .value-grid div {
+      flex: 1 1 auto;
+      margin: 0 1px;
+      background-color: rgb(170, 0, 0);
+      width: 100px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="page">
+    <!--Header section-->
+    <div class="header container">
+      <div class="navrow">
+        <div style="flex: 1 1 auto; padding: 5px;">
+          <a href="/">
+            <img src="/images/logo.svg" alt="Logo" style="height: 50px">
+          </a>
+        </div>
+        <!-- Navigation Bar/Menu -->
+        <div class="navbar">
+          <a href="#">Link</a>
+          <a href="#">Link</a>
+          <a href="#">Link</a>
+          <a href="#">Link</a>
+          <a href="#">Link</a>
+          <a href="#">Link</a>
+          <a href="#">Link</a>
+        </div>
+      </div>
+      <div class="banner centered">
+        <h1>Harbor View Yacht Club</h1>
+        <h2>The object of the Club shall be the promotion, protection, 
+          and the encouragement of boating for pleasure and sport and 
+          to encourage aquatic sports and good fellowship among its members.</h2>
+      </div>
+      <hr>
+      <br>
+      <div class="value-grid">
+        <div class="centered">
+          <h3>Value</h3>
+        </div>
+        <div class="centered">
+          <h3>Value</h3>
+        </div>
+        <div class="centered">
+          <h3>Value</h3>
+        </div>
+        <div class="centered">
+          <h3>Value</h3>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <h1>Next section</h1>
+    </div>
+  </div>
+
+</body>
+</html>
