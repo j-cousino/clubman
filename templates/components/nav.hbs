@@ -1,0 +1,14 @@
+<div class="navbar">
+  <div class="logo">
+    <a href="/">
+      <img src="/static/logos/clubman_logo.png" alt="CLUBMAN" style="height: 50px;"/>
+    </a>
+  </div>
+  <div class="navmenu">
+    {{#if is_signedin}}
+      <a href="/signout">Sign out</a>
+    {{else}}
+      <a href="/signin">Sign in</a>
+    {{/if}}
+  </div>
+</div>

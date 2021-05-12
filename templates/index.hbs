@@ -1,19 +1,9 @@
 {{#*inline "page"}}
 
-<section id="hello">
-  <h1>Hi {{ name }}!</h1>
-  <h3>Here are your items:</h3>
-  <ul>
-    {{#each items}}
-      <li>{{ this }}</li>
-    {{/each}}
-  </ul>
-</section>
-
-<section id="custom-helper">
-  <p>Try going to <a href="/hello/YourName">/hello/YourName</a>.</p>
-  <p>Also, check {{ wow "this" }} (custom helper) out!</p>
-</section>
+<div class="container">
+  <h1>Club Name</h1>
+  <h2>Purpose</h2>
+</div>
 
 {{/inline}}
 {{~> (parent)~}}

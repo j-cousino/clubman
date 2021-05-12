@@ -2,6 +2,9 @@
 certs = "private/cert.pem"
 key = "private/key.pem"
 
+[global]
+secret_key = "o5aMO6ha4B7m2E6jVE807XO2qYx0bE5+1CzFWnq1Fwk="
+
 [development]
 address = "127.0.0.1"
 port = 8080

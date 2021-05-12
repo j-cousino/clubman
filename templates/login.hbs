@@ -1,0 +1,12 @@
+{{#*inline "page"}}
+
+<form action="/login" method="post" accept-charset="utf-8">
+  <label for="useremail">email</label>
+  <input type="text" name="useremail" id="useremail" value="" />
+  <label for="password">password</label>
+  <input type="password" name="password" id="password" value="" />
+  <p><input type="submit" value="login"></p>
+</form>
+
+{{/inline}}
+{{~> (parent)~}}
