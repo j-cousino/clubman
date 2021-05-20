@@ -1,16 +1,23 @@
 {{#*inline "page"}}
 
+
+<p>
 {{#if data}}
-<p>Error: {{ data }}</p>
+  Error: {{ data }}
 {{/if}}
+</p>
 
 <form action="/signin" method="post" accept-charset="utf-8">
-  <label for="member_email">email</label>
-  <input type="text" name="member_email" id="member_email" value="" />
-  <label for="password">password</label>
-  <input type="password" name="password" id="password" value="" />
-  <p><input type="submit" value="Sign in"></p>
+  <label for="member_email">email</label><br>
+  <input type="email" name="member_email" id="member_email" value="" /><br>
+  <label for="password">password</label><br>
+  <input type="password" name="password" id="password" value="" /><br>
+  <p>
+    <input type="submit" value="Sign in">
+    <input type="submit" value="Apply" formaction="/apply" formmethod="POST">
+  </p>
 </form>
+</p>
 
 {{/inline}}
 {{~> (parent)~}}

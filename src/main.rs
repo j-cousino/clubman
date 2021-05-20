@@ -1,8 +1,10 @@
 #![feature(proc_macro_hygiene, decl_macro, never_type)]
 
+#[macro_use] extern crate lazy_static;
 #[macro_use] extern crate rocket;
 #[macro_use] extern crate serde_derive;
 extern crate rocket_contrib;
+
 
 use std::path::{Path, PathBuf};
 use std::string::String;
@@ -13,12 +15,23 @@ use rocket::response::{NamedFile, Redirect, Flash};
 use rocket::http::{Cookie, Cookies};
 use rocket_contrib::templates::Template;
 
+mod members;
+mod club;
+
+use members::Member;
+use club::Club;
+
 static LAYOUT: &str = "components/layout";
+
+lazy_static! {
+    static ref CLUBINFO: Club = Club::open();
+}
 
 #[derive(Serialize)]
 struct TemplateContext<T: ::serde::Serialize> {
     title: String,
     parent: &'static str,
+    clubinfo: &'static Club,
     data: T,
     is_member: bool,
 }
@@ -28,6 +41,7 @@ impl<T: ::serde::Serialize> TemplateContext<T> {
         Self {
             title,
             parent: LAYOUT,
+            clubinfo: &CLUBINFO,
             data,
             is_member,
         }
@@ -43,7 +57,7 @@ fn guest_home() -> Template {
 }
 
 #[get("/")]
-fn member_home(member: Member) -> Template {
+fn member_home(member: MemberID) -> Template {
     Template::render("index", &TemplateContext::new("Home".to_string(), member.0, true ))
 }
 
@@ -60,16 +74,16 @@ struct SignIn {
 }
 
 #[derive(Debug, Serialize)]
-struct Member(usize);
+struct MemberID(usize);
 
-impl<'a, 'r> FromRequest<'a, 'r> for Member {
+impl<'a, 'r> FromRequest<'a, 'r> for MemberID {
     type Error = !;
 
-    fn from_request(request: &'a Request<'r>) -> request::Outcome<Member, !> {
+    fn from_request(request: &'a Request<'r>) -> request::Outcome<MemberID, !> {
         request.cookies()
             .get_private("member_id")
             .and_then(|cookie| cookie.value().parse().ok())
-            .map(|id| Member(id))
+            .map(|id| MemberID(id))
             .or_forward(())
     }
 }
@@ -77,7 +91,7 @@ impl<'a, 'r> FromRequest<'a, 'r> for Member {
 // Accepts the sign in form
 #[post("/signin", data = "<signin>")]
 fn signin(mut cookies: Cookies, signin: Form<SignIn>) -> Result<Redirect, Flash<Redirect>> {
-    if signin.member_email == "Sergio" && signin.password == "password" {
+    if members::authenticate_member(&signin.member_email, &signin.password) {
         cookies.add_private(Cookie::new("member_id", 1.to_string()));
         Ok(Redirect::to(uri!(member_home)))
     } else {
@@ -86,8 +100,9 @@ fn signin(mut cookies: Cookies, signin: Form<SignIn>) -> Result<Redirect, Flash<
 }
 
 #[get("/signin")]
-fn signin_member(_member: Member) -> Template {
-    Template::render("signin", &TemplateContext::new("Sign in".to_string(), (), false))
+fn signin_member(_member: MemberID) -> Redirect {
+    //Template::render("signin", &TemplateContext::new("Sign in".to_string(), (), false))
+    Redirect::to(uri!(member_home))
 }
 
 #[get("/signin", rank = 2)]
@@ -102,9 +117,21 @@ fn signin_error(flash: Option<FlashMessage>) -> Template {
 }
 
 #[get("/signout")]
-fn signout(mut cookies: Cookies) -> Flash<Redirect> {
+fn signout(mut cookies: Cookies) -> Redirect {
     cookies.remove_private(Cookie::named("member_id"));
-    Flash::success(Redirect::to(uri!(signin_error)), "Successfully logged out.")
+    Redirect::to(uri!(guest_home))
+}
+
+#[post("/apply", data = "<signin>")]
+fn apply(signin: Form<SignIn>) {
+    let member = Member::new( &signin.member_email, &signin.password );
+    println!(
+        "Member ID: {}\nemail    : {}\npasshash : {}", 
+         member.id.to_string(), 
+         member.email, 
+         member.pass_hash
+    );
+
 }
 
 
@@ -116,6 +143,7 @@ fn not_found(req: &Request) -> Template {
 }
 
 fn main() {
+
     rocket::ignite()
         .mount(
             "/", 
@@ -126,7 +154,8 @@ fn main() {
                 signin, 
                 signin_member, 
                 signin_error,
-                signout
+                signout,
+                apply,
             ])
         .register(catchers![not_found])
         .attach(Template::fairing())

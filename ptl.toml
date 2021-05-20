@@ -17,3 +17,23 @@ stop = "2021-05-10T18:42:22.322371-04:00"
 email = "j.cousino.consulting@gmail.com"
 start = "2021-05-10T20:37:44.447589-04:00"
 stop = "2021-05-10T22:45:35.145753800-04:00"
+
+[[entries]]
+email = "j.cousino.consulting@gmail.com"
+start = "2021-05-12T07:08:40.460586-04:00"
+stop = "2021-05-12T19:00:50.016820100-04:00"
+
+[[entries]]
+email = "j.cousino.consulting@gmail.com"
+start = "2021-05-16T21:47:53.080457-04:00"
+stop = "2021-05-16T21:48:36.808719100-04:00"
+
+[[entries]]
+email = "j.cousino.consulting@gmail.com"
+start = "2021-05-16T22:09:02.334587-04:00"
+stop = "2021-05-16T22:23:28.304002500-04:00"
+
+[[entries]]
+email = "j.cousino.consulting@gmail.com"
+start = "2021-05-16T22:24:29.960213300-04:00"
+stop = "2021-05-17T00:11:52.768419200-04:00"

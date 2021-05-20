@@ -1,11 +1,24 @@
 {{#*inline "page"}}
 
-<p>Logged in with user ID {{ data }}.</p>
-
-<div class="container">
-  <h1>Club Name</h1>
-  <h2>Purpose</h2>
-</div>
+<header class="w3-container w3-red" style="padding: 128px 16px;">
+  <div class="w3-row">
+    <div class="w3-col m1 w3-container"></div>
+    <div class="w3-col m4 w3-container">
+      <h1 class="w3-jumbo">{{clubinfo.name}}</h1>
+      <p class="w3-xlarge">{{clubinfo.purpose}}</p>
+    </div>
+    <div class="w3-col m2 w3-container"></div>
+    <div class="w3-col m4 w3-container">
+      <p>
+        {{#each clubinfo.address as |value|}}
+        {{value}}<br>
+        {{/each}}
+      </p>
+      <span>{{clubinfo.phone}}</span>
+    </div>
+    <div class="w3-col m1 w3-container"></div>
+  </div>  
+</header>
 
 {{/inline}}
 {{~> (parent)~}}
