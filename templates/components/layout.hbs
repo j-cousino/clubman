@@ -51,10 +51,17 @@
   {{~> page}}
   {{> components/footer}}
   <script>
-    function menuToggle(menuicon) {
-      var x = document.getElementById("mobileNav");
+    function menuToggleIfShown() {
+      if ( document.getElementById("mobileNav")
+            .className.match("w3-show") ) {
+              menuToggle();
+            }
+    }
 
-      menuicon.classList.toggle("change");
+    function menuToggle() {
+      var x = document.getElementById("mobileNav");
+      
+      document.getElementById("menuicon").classList.toggle("change");
 
       if (x.className.indexOf("w3-show") == -1) {
         x.className += " w3-show";

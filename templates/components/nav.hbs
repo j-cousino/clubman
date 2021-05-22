@@ -1,13 +1,12 @@
 <!-- Navigation Bar (Sits on top) -->
 <div class="w3-top">
   <div class="w3-bar w3-red w3-card-4 w3-large" id="Navbar">
-    <a href="/#home" class="w3-bar-item w3-button w3-wide">CLUBMAN</a>
+    <a href="/#home" class="w3-bar-item w3-button w3-wide" onclick="menuToggleIfShown()">CLUBMAN</a>
 
     <div style="display: flex; justify-content: flex-end;">
       <a href="/#about" class="w3-bar-item w3-button w3-hide-small">ABOUT</a>
-      <a href="/#officers" class="w3-bar-item w3-button w3-hide-small">OFFICERS</a>
-      <a href="/#pricing" class="w3-bar-item w3-button w3-hide-small">PRICING</a>
-      <a href="/#questions" class="w3-bar-item w3-button w3-hide-small">QUESTIONS</a>
+      <a href="/#events" class="w3-bar-item w3-button w3-hide-small">EVENTS</a>
+      <a href="/#leadership" class="w3-bar-item w3-button w3-hide-small">LEADERSHIP</a>
       {{#if is_member}}
       <a href="/signout" class="w3-bar-item w3-button w3-hide-small" style="white-space: nowrap;">SIGN OUT</a>
       {{else}}
@@ -15,7 +14,7 @@
       {{/if}}
 
       <!-- Menu icon toggles menu on mobile -->
-     <div class="menuicon w3-bar-item w3-hide-medium w3-hide-large" onclick="menuToggle(this)">
+     <div id="menuicon" class="menuicon w3-bar-item w3-hide-medium w3-hide-large" onclick="menuToggle()">
         <div class="bar1"></div>
         <div class="bar2"></div>
         <div class="bar3"></div>
@@ -24,14 +23,13 @@
 
     <!-- Nav menu on mobile -->
     <div id="mobileNav" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-      <a href="/#about" class="w3-bar-item w3-button">ABOUT</a>
-      <a href="/#officers" class="w3-bar-item w3-button">OFFICERS</a>
-      <a href="/#pricing" class="w3-bar-item w3-button">PRICING</a>
-      <a href="/#questions" class="w3-bar-item w3-button">QUESTIONS</a>
+      <a href="/#about" class="w3-bar-item w3-button" onclick="menuToggle()">ABOUT</a>
+      <a href="/#events" class="w3-bar-item w3-button" onclick="menuToggle()">EVENTS</a>
+      <a href="/#leadership" class="w3-bar-item w3-button" onclick="menuToggle()">LEADERSHIP</a>
       {{#if is_member}}
-      <a href="/signout" class="w3-bar-item w3-button" style="white-space: nowrap;">SIGN OUT</a>
+      <a href="/signout" class="w3-bar-item w3-button" style="white-space: nowrap;" onclick="menuToggle()">SIGN OUT</a>
       {{else}}
-      <a href="/signin" class="w3-bar-item w3-button" style="white-space: nowrap;">SIGN IN</a>
+      <a href="/signin" class="w3-bar-item w3-button" style="white-space: nowrap;" onclick="menuToggle()">SIGN IN</a>
       {{/if}}
     </div>
   

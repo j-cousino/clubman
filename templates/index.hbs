@@ -1,24 +1,95 @@
 {{#*inline "page"}}
 
-<header class="w3-container w3-red" style="padding: 128px 16px;">
-  <div class="w3-row">
-    <div class="w3-col m1 w3-container"></div>
-    <div class="w3-col m4 w3-container">
-      <h1 class="w3-jumbo">{{clubinfo.name}}</h1>
-      <p class="w3-xlarge">{{clubinfo.purpose}}</p>
-    </div>
-    <div class="w3-col m2 w3-container"></div>
-    <div class="w3-col m4 w3-container">
-      <p>
-        {{#each clubinfo.address as |value|}}
-        {{value}}<br>
-        {{/each}}
-      </p>
-      <span>{{clubinfo.phone}}</span>
-    </div>
-    <div class="w3-col m1 w3-container"></div>
-  </div>  
+<!-- Header section -->
+<header class="w3-container w3-red w3-center" style="padding: 128px 16px;" id="home">
+  <h1 class="w3-jumbo">{{clubinfo.name}}</h1>
+  <p class="w3-xlarge">{{clubinfo.purpose}}</p>
 </header>
+
+<!-- About section -->
+<div class="w3-container w3-center" style="padding:128px 16px" id="about">
+  <h3>WHY JOIN OUR CLUB</h3>
+  <p class="w3-large">Here's what we offer</p>
+  <div class="w3-row-padding" style="margin-top: 64px">
+    <!-- place holders to be replaced by database entries -->
+    <div class="w3-quarter w3-margin-bottom">
+      <div class="w3-card-4 w3-red">Value 1</div>
+    </div>
+    <div class="w3-quarter w3-margin-bottom">
+      <div class="w3-card-4 w3-red">Value 2</div>
+    </div>
+    <div class="w3-quarter w3-margin-bottom">
+      <div class="w3-card-4 w3-red">Value 3</div>
+    </div>
+    <div class="w3-quarter w3-margin-bottom">
+      <div class="w3-card-4 w3-red">Value 4</div>
+    </div>
+  </div>  
+</div>
+
+<!-- Upcoming events -->
+<div class="w3-container w3-light-grey" style="padding: 128px 16px;" id="events">
+  <h3 class="w3-center">EVENTS</h3>
+  <p class="w3-center w3-large">What's happening</p>
+  <!-- list upcoming events from database here -->
+</div>
+
+<!-- Officer section -->
+<div class="w3-container" style="padding:128px 16px" id="leadership">
+  <h3 class="w3-center">OFFICERS</h3>
+  <p class="w3-large w3-center">Our fearless leaders</p>
+  <div class="w3-row-padding" style="margin-top: 64px">
+    <!-- Placeholders to be replaced database entries -->
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <img src="static/images/avatar.png" alt="name" style="width: 100%;">
+        <div class="w3-container">
+          <h3>First Lastname</h3>
+          <p class="w3-opacity">Title</p>
+          <p><button class="w3-button w3-light-grey w3-block">
+            Contact
+          </button> </p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <img src="static/images/avatar.png" alt="name" style="width: 100%;">
+        <div class="w3-container">
+          <h3>First Lastname</h3>
+          <p class="w3-opacity">Title</p>
+          <p><button class="w3-button w3-light-grey w3-block">
+            Contact
+          </button> </p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <img src="static/images/avatar.png" alt="name" style="width: 100%;">
+        <div class="w3-container">
+          <h3>First Lastname</h3>
+          <p class="w3-opacity">Title</p>
+          <p><button class="w3-button w3-light-grey w3-block">
+            Contact
+          </button> </p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <img src="static/images/avatar.png" alt="name" style="width: 100%;">
+        <div class="w3-container">
+          <h3>First Lastname</h3>
+          <p class="w3-opacity">Title</p>
+          <p><button class="w3-button w3-light-grey w3-block">
+            Contact
+          </button> </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 {{/inline}}
 {{~> (parent)~}}

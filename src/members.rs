@@ -1,4 +1,4 @@
-c/// membership database 
+/// membership database 
 use std::string::String;
 use std::error::Error;
 
